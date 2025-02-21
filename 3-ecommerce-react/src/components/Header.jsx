@@ -1,19 +1,20 @@
 import { CgProfile } from "react-icons/cg";
 import { FaHeartbeat } from "react-icons/fa";
 import { FaBagShopping } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <>
       <header>
         <div className="logo_container">
-          <a href="#">
+          <Link to="/Home">
             <img
               className="myntra_home"
               src="images/myntra_logo.webp"
               alt="Myntra Home"
             />
-          </a>
+          </Link>
         </div>
         <nav className="nav_bar">
           <a href="#">Men</a>
@@ -43,14 +44,14 @@ const Header = () => {
             <span className="action_name">Wishlist</span>
           </div>
 
-          <a
+          <Link
             className="action_container"
-            href="pages/bag.html"
+            to="/bag"
           >
             <FaBagShopping />
             <span className="action_name">Bag</span>
             <span className="bag-item-count">0</span>
-          </a>
+          </Link>
         </div>
       </header>
     </>
