@@ -51,4 +51,4 @@ const Footer = () => {
   );
 };
 
-removeEventListener;
+export default Footer;

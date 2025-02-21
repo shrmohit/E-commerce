@@ -1,3 +1,7 @@
+import { CgProfile } from "react-icons/cg";
+import { FaHeartbeat } from "react-icons/fa";
+import { FaBagShopping } from "react-icons/fa6";
+
 const Header = () => {
   return (
     <>
@@ -30,16 +34,12 @@ const Header = () => {
         </div>
         <div className="action_bar">
           <div className="action_container">
-            <span className="material-symbols-outlined action_icon">
-              person
-            </span>
+            <CgProfile />
             <span className="action_name">Profile</span>
           </div>
 
           <div className="action_container">
-            <span className="material-symbols-outlined action_icon">
-              favorite
-            </span>
+            <FaHeartbeat />
             <span className="action_name">Wishlist</span>
           </div>
 
@@ -47,9 +47,7 @@ const Header = () => {
             className="action_container"
             href="pages/bag.html"
           >
-            <span className="material-symbols-outlined action_icon">
-              shopping_bag
-            </span>
+            <FaBagShopping />
             <span className="action_name">Bag</span>
             <span className="bag-item-count">0</span>
           </a>
