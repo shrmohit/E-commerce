@@ -24,6 +24,6 @@ const itemSlice = createSlice({
   },
 });
 
-export const itemActions = itemsSlice.action;
+export const itemActions = itemSlice.action;
 
 export default itemSlice;
