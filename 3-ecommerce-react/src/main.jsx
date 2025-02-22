@@ -20,7 +20,7 @@ const router = createBrowserRouter([
 ]);
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    //2
+    {/* //2 */}
     <Provider store={myntraStore}>
       <RouterProvider router={router} />
     </Provider>
