@@ -13,6 +13,10 @@ const HomeItem = ({ item }) => {
   const handleAddToBag = () => {
     dispatch(bagActions.addToBag(item.id));
   };
+
+  const handleRemoveFromBag = () => {
+    dispatch(bagActions.removeFromBag(item.id));
+  };
   return (
     <>
       <div className="item-container">
@@ -36,6 +40,7 @@ const HomeItem = ({ item }) => {
           <button
             type="button"
             className="btn-add-bag btn btn-danger"
+            onClick={handleRemoveFromBag}
           >
             <MdDeleteForever />
             Remove from Bag
