@@ -1,9 +1,12 @@
 import { CgProfile } from "react-icons/cg";
 import { FaHeartbeat } from "react-icons/fa";
 import { FaBagShopping } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const bag = useSelector((store) => store.bag);
+
   return (
     <>
       <header>
@@ -50,7 +53,7 @@ const Header = () => {
           >
             <FaBagShopping />
             <span className="action_name">Bag</span>
-            <span className="bag-item-count">0</span>
+            <span className="bag-item-count">{bag.length}</span>
           </Link>
         </div>
       </header>

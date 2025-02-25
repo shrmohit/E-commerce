@@ -1,4 +1,11 @@
+import { useDispatch } from "react-redux";
+import { bagActions } from "../store/bagSlice";
+
 const HomeItem = ({ item }) => {
+  const dispatch = useDispatch();
+  const handleAddToBag = () => {
+    dispatch(bagActions.addToBag(item.id));
+  };
   return (
     <>
       <div className="item-container">
@@ -19,7 +26,7 @@ const HomeItem = ({ item }) => {
         </div>
         <button
           className="btn-add-bag"
-          onClick={() => console.log("HomeItem")}
+          onClick={handleAddToBag}
         >
           Add to Bag
         </button>
