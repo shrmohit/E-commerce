@@ -8,6 +8,7 @@ function App() {
     <>
       <Header />
       <FetchItems />
+      <fetchStatus />
       <Outlet />
       <Footer />
     </>
