@@ -27,7 +27,7 @@ const BagSummary = ({}) => {
       <hr />
       <div className="price-footer">
         <span className="price-item-tag">Total Amount</span>
-        <span className="price-item-value">₹${bagSummary.finalPayment}</span>
+        <span className="price-item-value">₹{bagSummary.finalPayment}</span>
       </div>
 
       <button className="btn-place-order">
