@@ -3,8 +3,15 @@ import { Link } from "react-router-dom";
 import { HiOutlineShoppingBag, HiOutlineUser } from "react-icons/hi";
 import { HiBars3BottomRight } from "react-icons/hi2";
 import SearchBar from "./SearchBar";
+import CartDrawer from "../Layout/CartDrawer";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [cartOpen, setCartOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setCartOpen(!cartOpen);
+  };
   return (
     <>
       <nav>
@@ -46,7 +53,10 @@ const Navbar = () => {
             <Link to="/profile">
               <HiOutlineUser className="h-5 w-4 text-gray-700 hover:text-black" />
             </Link>
-            <button className="relative">
+            <button
+              onClick={handleDrawerToggle}
+              className="relative"
+            >
               <HiOutlineShoppingBag className="h-5 w-4 text-gray-500  hover:text-black" />
               {/* Bag number of items */}
               <span className="absolute -top-1 bg-rabbit-red text-white text-xs rounded-full px-1 py-0.3">
@@ -64,6 +74,10 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+      <CartDrawer
+        cartOpen={cartOpen}
+        handleDrawerToggle={handleDrawerToggle}
+      />
     </>
   );
 };

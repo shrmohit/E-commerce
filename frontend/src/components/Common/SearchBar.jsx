@@ -52,6 +52,7 @@ const SearchBar = () => {
           </button>
         </form>
       ) : (
+        // search icon
         <button onClick={handleSearchToggle}>
           <HiMagnifyingGlass className="text-gray-500 hover:text-black h-5 w-4" />
         </button>
