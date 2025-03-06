@@ -33,7 +33,7 @@ const TopBar = () => {
         <div>
           <a
             href="tel:+1234567890"
-            className="hidden md:hover:text-gray-300"
+            className="hidden md:flex hover:text-gray-300"
           >
             +1 (234) 567-890
           </a>
