@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { HiOutlineShoppingBag, HiOutlineUser } from "react-icons/hi";
 import { HiBars3BottomRight } from "react-icons/hi2";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   return (
@@ -42,26 +43,26 @@ const Navbar = () => {
 
           {/* Right - Icons*/}
           <div className="flex items-center space-x-4">
-            <Link
-              to="/profile"
-              className="hover:text-black"
-            >
-              <HiOutlineUser className="h-5 w-4 text-gray-700" />
+            <Link to="/profile">
+              <HiOutlineUser className="h-5 w-4 text-gray-700 hover:text-black" />
             </Link>
-            <button className="relative hover:text-black">
-              <HiOutlineShoppingBag className="h-5 w-4 text-gray-700" />
+            <button className="relative">
+              <HiOutlineShoppingBag className="h-5 w-4 text-gray-500  hover:text-black" />
               {/* Bag number of items */}
               <span className="absolute -top-1 bg-rabbit-red text-white text-xs rounded-full px-1 py-0.3">
                 4
               </span>
             </button>
             {/* search */}
+            <div className="overflow-hidden">
+              <SearchBar />
+            </div>
+
             <button className="hidden md">
-              <HiBars3BottomRight className="h-5 w-4 text-gray-700" />
+              <HiBars3BottomRight className="h-5 w-4 text-gray-500" />
             </button>
           </div>
         </div>
-        <hr className="" />
       </nav>
     </>
   );
