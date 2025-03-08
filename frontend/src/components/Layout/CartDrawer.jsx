@@ -1,12 +1,13 @@
 import React from "react";
-import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
+import CartContent from "../Cart/CartContent";
 
 const CartDrawer = ({ cartOpen, handleDrawerToggle }) => {
   return (
     <>
       <div
-        className={`fixed top-0 right-0 w-3/4 sm:w-1/2 md:w-1/4 h-full bg-white shadow-lg transform transition-transform duration-300 flex flex-col z-50 ${
+        // sm:w-1/2 md:w-[30rem] it is used for responsive width styles for an element
+        className={`fixed top-0 right-0 w-3/4 sm:w-1/2 md:w-[30rem] h-full bg-white shadow-lg transform transition-transform duration-300 flex flex-col z-50 ${
           cartOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -20,6 +21,7 @@ const CartDrawer = ({ cartOpen, handleDrawerToggle }) => {
         <div className="flex-grow p-4 overflow-y-auto">
           <h2 className="text-xl font-semibold mb-4">Your Cart</h2>
           {/* Component for cart content  */}
+          <CartContent />
         </div>
         {/* Checkout button fixed at the bottom  */}
         <div className="sticky bottom-0 bg-white p-4">
