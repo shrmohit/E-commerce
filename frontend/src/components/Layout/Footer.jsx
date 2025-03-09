@@ -47,7 +47,6 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                Link
                 to="/"
                 className="hover:text-gray-500 transition-colors"
               >
@@ -56,7 +55,6 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                Link
                 to="/"
                 className="hover:text-gray-500 transition-colors"
               >
@@ -65,7 +63,6 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                Link
                 to="/"
                 className="hover:text-gray-500 transition-colors"
               >
@@ -89,7 +86,6 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                Link
                 to="/"
                 className="hover:text-gray-500 transition-colors"
               >
@@ -98,7 +94,6 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                Link
                 to="/"
                 className="hover:text-gray-500 transition-colors"
               >
@@ -107,7 +102,6 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                Link
                 to="/"
                 className="hover:text-gray-500 transition-colors"
               >
