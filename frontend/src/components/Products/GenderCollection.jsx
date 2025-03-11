@@ -12,7 +12,7 @@ const GenderCollection = () => {
           <img
             src={womensCollectionImage}
             alt="woems-collection"
-            className="w-full h-[700px]  object-cover"
+            className="w-full h-[600px]  object-cover"
           />
           <div className="absolute bottom-8 left-8 bg-white bg-opacity-90 p-4">
             <h2 className="text-2xl font-bold text-gray-900 mb-3">
@@ -31,7 +31,7 @@ const GenderCollection = () => {
           <img
             src={mensCollectionImage}
             alt="woems-collection"
-            className="w-full h-[700px]  object-cover"
+            className="w-full h-[600px]  object-cover"
           />
           <div className="absolute bottom-8 left-8 bg-white bg-opacity-90 p-4">
             <h2 className="text-2xl font-bold text-gray-900 mb-3">
