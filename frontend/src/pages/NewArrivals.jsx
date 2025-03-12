@@ -116,7 +116,7 @@ const NewArrivals = () => {
   }, []);
 
   return (
-    <section className="relative">
+    <section className="py-16 px-4 lg:px-0 ">
       <div className="container mx-auto text-center mb-10 relative">
         <h2 className="text-3xl font-bold mb-4">Explore New Arrivals</h2>
         <p className="mb-8 text-lg text-gray-600">
@@ -129,8 +129,10 @@ const NewArrivals = () => {
           <button
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
-            className={`p-2 rounded border bg-white text-black ${
-              !canScrollLeft ? "opacity-50 cursor-not-allowed" : ""
+            className={`p-2 rounded border ${
+              canScrollLeft
+                ? "bg-white text-black"
+                : "bg-gray-200 text-gray-400 cursor-not-allowed"
             }`}
           >
             <FiChevronLeft className="text-2xl" />
@@ -138,8 +140,10 @@ const NewArrivals = () => {
           <button
             onClick={() => scroll("right")}
             disabled={!canScrollRight}
-            className={`p-2 rounded border bg-white text-black ${
-              !canScrollRight ? "opacity-50 cursor-not-allowed" : ""
+            className={`p-2 rounded border ${
+              canScrollRight
+                ? "bg-white text-black"
+                : "bg-gray-200 text-gray-400 cursor-not-allowed"
             }`}
           >
             <FiChevronRight className="text-2xl" />
