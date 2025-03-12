@@ -9,6 +9,8 @@ const Home = () => {
       <Hero />
       <GenderCollection />
       <NewArrivals />
+      {/* Best seller */}
+      <h2 className="text-center font-bold mb-4 text-3xl">Best Seller</h2>
     </div>
   );
 };
