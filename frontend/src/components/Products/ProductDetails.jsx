@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 const selectedProduct = {
   name: "Stylish Jacket",
   price: 120,
@@ -25,9 +25,19 @@ const selectedProduct = {
 };
 
 const ProductDetails = () => {
+  const [mainImage, setMainImage] = useState(selectedProduct.images[0]?.url);
+  const [quantity, setquantity] = useState(1);
+
+  const handleDecreaseing = () => {
+    setquantity((prev) => (prev > 1 ? prev - 1 : 0));
+  };
+
+  const handleIncreasing = () => {
+    setquantity((prev) => prev + 1);
+  };
   return (
-    <div className="p-6">
-      <div className="max-w-6xl mx-auto bg-white p-8 rounded-lg">
+    <div className="flex justify-center items-center min-h-screen p-6">
+      <div className="max-w-6xl w-full bg-white p-8 rounded-lg shadow-lg">
         <div className="flex flex-col md:flex-row">
           {/* Left Thumbnails */}
           <div className="hidden md:flex flex-col space-y-4 mr-6">
@@ -36,7 +46,10 @@ const ProductDetails = () => {
                 key={index}
                 src={image.url}
                 alt={image.altText || `Thumbnail ${index}`}
-                className="w-20 h-20 object-cover rounded-lg curser-pointer border"
+                className={`w-30 h-20 object-cover rounded-lg cursor-pointer border ${
+                  mainImage == image.url ? "border-black" : "border-gray-300"
+                }`}
+                onClick={() => setMainImage(image.url)}
               />
             ))}
           </div>
@@ -45,20 +58,23 @@ const ProductDetails = () => {
           <div className="md:w-1/2">
             <div className="mb-4">
               <img
-                src={selectedProduct.images[0]?.url}
+                src={mainImage}
                 alt="Main Product"
                 className="w-full h-auto object-cover rounded-lg"
               />
             </div>
           </div>
           {/*Mobile Thumbnail  */}
-          <div className="md:hidden flex overscroll-x-scroll space-x-4 mb-4">
+          <div className="md:hidden flex overflow-x-auto space-x-4 mb-4">
             {selectedProduct.images.map((image, index) => (
               <img
                 key={index}
                 src={image.url}
                 alt={image.altText || `Thumbnail ${index}`}
-                className="w-20 h-20 object-cover rounded-lg curser-pointer border"
+                className={`w-30 h-20 object-cover rounded-lg cursor-pointer border ${
+                  mainImage == image.url ? "border-black" : "border-gray-300"
+                }`}
+                onClick={() => setMainImage(image.url)}
               />
             ))}
           </div>
@@ -108,14 +124,20 @@ const ProductDetails = () => {
               <div className="mt-2">
                 <p className="text-gray-700">Quantity:</p>
                 <div
-                  className="flex
+                  className="flex items-center
                 mt-2 gap-2"
                 >
-                  <button className="bg-gray-400 h-8 w-6 rounded-sm font-bold">
+                  <button
+                    onClick={handleDecreaseing}
+                    className="bg-gray-400 h-8 w-6 rounded-sm font-bold"
+                  >
                     -
                   </button>
-                  <span className="text-center">1</span>
-                  <button className="bg-gray-400 h-8 w-6 rounded-sm font-bold">
+                  <span className="text-center">{quantity}</span>
+                  <button
+                    onClick={handleIncreasing}
+                    className="bg-gray-400 h-8 w-6 rounded-sm font-bold"
+                  >
                     +
                   </button>
                 </div>
