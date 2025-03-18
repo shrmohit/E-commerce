@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "sonner";
 const selectedProduct = {
   name: "Stylish Jacket",
   price: 120,
@@ -27,7 +28,26 @@ const selectedProduct = {
 const ProductDetails = () => {
   const [mainImage, setMainImage] = useState(selectedProduct.images[0]?.url);
   const [quantity, setquantity] = useState(1);
+  const [selectedColor, setSelectedColor] = useState("");
+  const [selectSize, setSelectSize] = useState("");
+  const [isButtonDisbled, setIsButtonDisbled] = useState("");
 
+  const handleAddToCart = () => {
+    if (!selectSize || !selectedColor) {
+      toast.error("Please select a size and color before adding to cart", {
+        duration: 1000,
+      });
+      return;
+    }
+    setIsButtonDisbled(true);
+
+    setTimeout(() => {
+      toast.success("Product added to cart!", {
+        duration: 1000,
+      });
+      setIsButtonDisbled(false);
+    }, 500);
+  };
   const handleDecreaseing = () => {
     setquantity((prev) => (prev > 1 ? prev - 1 : 0));
   };
@@ -99,7 +119,12 @@ const ProductDetails = () => {
                   {selectedProduct.colors.map((color) => (
                     <button
                       key={color}
-                      className="w-8 h-8 rounded-full border"
+                      className={`w-8 h-8 rounded-full border ${
+                        selectedColor === color
+                          ? "border-4 border-black"
+                          : "border-gray-300"
+                      }`}
+                      onClick={() => setSelectedColor(color)}
                       style={{
                         backgroundColor: color.toLocaleLowerCase(),
                         filter: "brightness(0.5)",
@@ -114,7 +139,12 @@ const ProductDetails = () => {
                   {selectedProduct.sizes.map((size) => (
                     <button
                       key={size}
-                      className="px-4 py-2 border font-bold rounded-sm shadow-sm"
+                      onClick={() => setSelectSize(size)}
+                      className={`px-4 py-2 border font-bold rounded-sm shadow-sm ${
+                        selectSize === size
+                          ? "bg-black text-white "
+                          : "bg-white text-black"
+                      }`}
                     >
                       {size}
                     </button>
@@ -143,10 +173,16 @@ const ProductDetails = () => {
                 </div>
               </div>
               <button
-                className="py-5 w-full bg-black text-white rounded
-               mt-5"
+                onClick={handleAddToCart}
+                disabled={isButtonDisbled}
+                className={`py-5 w-full bg-black text-white rounded
+               mt-5 ${
+                 isButtonDisbled
+                   ? "cursor-not-allowed opacity-50"
+                   : "hover:bg-gray-500"
+               }`}
               >
-                ADD TO CART
+                {isButtonDisbled ? "Adding..." : "ADD TO CART"}
               </button>
               <div className="mt-10 text-gray-700 ">
                 <h3 className="text-xl font-bold mb-4">Characteristics:</h3>
