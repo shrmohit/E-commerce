@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "sonner";
+import ProductGrid from "./ProductGrid";
 const selectedProduct = {
   name: "Stylish Jacket",
   price: 120,
@@ -24,6 +25,33 @@ const selectedProduct = {
     },
   ],
 };
+
+const similarProducts = [
+  {
+    id: 1,
+    name: "Classic Oxford button Down",
+    price: 19.23,
+    image: [{ url: "https://picsum.photos/500/500/?random=9" }],
+  },
+  {
+    id: 2,
+    name: "Classic Oxford button Down",
+    price: 19.23,
+    image: [{ url: "https://picsum.photos/500/500/?random=7" }],
+  },
+  {
+    id: 3,
+    name: "Classic Oxford button Down",
+    price: 19.23,
+    image: [{ url: "https://picsum.photos/500/500/?random=8" }],
+  },
+  {
+    id: 4,
+    name: "Classic Oxford button Down",
+    price: 19.23,
+    image: [{ url: "https://picsum.photos/500/500/?random=6" }],
+  },
+];
 
 const ProductDetails = () => {
   const [mainImage, setMainImage] = useState(selectedProduct.images[0]?.url);
@@ -56,17 +84,17 @@ const ProductDetails = () => {
     setquantity((prev) => prev + 1);
   };
   return (
-    <div className="flex justify-center items-center min-h-screen p-6">
-      <div className="max-w-6xl w-full bg-white p-8 rounded-lg shadow-lg">
+    <div className="container mx-auto p-6">
+      <div className="max-w-6xl w-full bg-white p-8 rounded-lg ">
         <div className="flex flex-col md:flex-row">
           {/* Left Thumbnails */}
-          <div className="hidden md:flex flex-col space-y-4 mr-6">
+          <div className="hidden md:flex flex-col space-y-4 mr-6 w-32 h-32">
             {selectedProduct.images.map((image, index) => (
               <img
                 key={index}
                 src={image.url}
                 alt={image.altText || `Thumbnail ${index}`}
-                className={`w-30 h-20 object-cover rounded-lg cursor-pointer border ${
+                className={`w-full h-full object-cover rounded-lg cursor-pointer border ${
                   mainImage == image.url ? "border-black" : "border-gray-300"
                 }`}
                 onClick={() => setMainImage(image.url)}
@@ -75,8 +103,8 @@ const ProductDetails = () => {
           </div>
 
           {/* Main Image */}
-          <div className="md:w-1/2">
-            <div className="mb-4">
+          <div className="md:w-full">
+            <div className="mb-4 ">
               <img
                 src={mainImage}
                 alt="Main Product"
@@ -99,7 +127,7 @@ const ProductDetails = () => {
             ))}
           </div>
           <div>
-            <div className="md:w-1/2 md:ml-10">
+            <div className="w-full md:ml-10">
               <h1 className="text-2xl md:text-3xl font-semibold mb-2">
                 {selectedProduct.name}
               </h1>
@@ -201,6 +229,11 @@ const ProductDetails = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="mt-20">
+          <h2 className="text-center font-bold text-3xl">You May Also Like</h2>
+          <ProductGrid products={similarProducts} />
         </div>
       </div>
     </div>
