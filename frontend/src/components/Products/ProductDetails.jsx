@@ -84,17 +84,17 @@ const ProductDetails = () => {
     setquantity((prev) => prev + 1);
   };
   return (
-    <div className="container mx-auto p-6">
-      <div className="max-w-6xl w-full bg-white p-8 rounded-lg ">
+    <div className="p-6">
+      <div className="max-w-6xl mx-auto bg-white p-8 rounded-lg ">
         <div className="flex flex-col md:flex-row">
           {/* Left Thumbnails */}
-          <div className="hidden md:flex flex-col space-y-4 mr-6 w-32 h-32">
+          <div className="hidden md:flex flex-col space-y-4 mr-6 ">
             {selectedProduct.images.map((image, index) => (
               <img
                 key={index}
                 src={image.url}
                 alt={image.altText || `Thumbnail ${index}`}
-                className={`w-full h-full object-cover rounded-lg cursor-pointer border ${
+                className={`w-60 h-24 object-cover rounded-lg cursor-pointer border ${
                   mainImage == image.url ? "border-black" : "border-gray-300"
                 }`}
                 onClick={() => setMainImage(image.url)}
@@ -103,7 +103,10 @@ const ProductDetails = () => {
           </div>
 
           {/* Main Image */}
-          <div className="md:w-full">
+          <div
+            className="md:w-full 
+          "
+          >
             <div className="mb-4 ">
               <img
                 src={mainImage}
@@ -127,7 +130,7 @@ const ProductDetails = () => {
             ))}
           </div>
           <div>
-            <div className="w-full md:ml-10">
+            <div className="md:w-9/10 md:ml-10">
               <h1 className="text-2xl md:text-3xl font-semibold mb-2">
                 {selectedProduct.name}
               </h1>
