@@ -213,6 +213,7 @@ const ProductDetails = () => {
                    : "hover:bg-gray-500"
                }`}
               >
+                {/* sonner is used for message pop up */}
                 {isButtonDisbled ? "Adding..." : "ADD TO CART"}
               </button>
               <div className="mt-10 text-gray-700 ">

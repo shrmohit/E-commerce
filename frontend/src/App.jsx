@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserLayout from "./components/Layout/UserLayout";
 import Home from "./pages/Home";
 import { Toaster } from "sonner";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
             <Route
               index
               element={<Home />}
+            />
+            <Route
+              path="Login"
+              element={<Login />}
             />
           </Route>
         </Routes>

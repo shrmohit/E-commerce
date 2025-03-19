@@ -5,6 +5,7 @@ import NewArrivals from "../pages/NewArrivals";
 import ProductDetails from "../components/Products/ProductDetails";
 import ProductGrid from "../components/Products/ProductGrid";
 import FeatureCollection from "../components/Products/FeatureCollection";
+import FeatureSection from "../components/Products/FeatureSection";
 
 const Home = () => {
   const placeholderproducts = [
@@ -72,6 +73,7 @@ const Home = () => {
         <ProductGrid products={placeholderproducts} />
       </div>
       <FeatureCollection />
+      <FeatureSection />
     </div>
   );
 };
