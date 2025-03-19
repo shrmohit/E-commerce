@@ -88,7 +88,7 @@ const ProductDetails = () => {
       <div className="max-w-6xl mx-auto bg-white p-8 rounded-lg ">
         <div className="flex flex-col md:flex-row">
           {/* Left Thumbnails */}
-          <div className="hidden md:flex flex-col space-y-4 mr-6 ">
+          <div className="hidden lg:flex flex-col space-y-4 mr-6 ">
             {selectedProduct.images.map((image, index) => (
               <img
                 key={index}
@@ -116,7 +116,7 @@ const ProductDetails = () => {
             </div>
           </div>
           {/*Mobile Thumbnail  */}
-          <div className="md:hidden flex overflow-x-auto space-x-4 mb-4">
+          <div className="sm:hidden flex overflow-x-auto space-x-4 mb-4">
             {selectedProduct.images.map((image, index) => (
               <img
                 key={index}
