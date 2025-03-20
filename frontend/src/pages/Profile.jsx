@@ -1,4 +1,5 @@
 import React from "react";
+import MyOrdersPage from "./MyOrdersPage";
 
 const Profile = () => {
   return (
@@ -15,10 +16,11 @@ const Profile = () => {
             >
               Logout
             </button>
-
-            {/* right section - order table
-             */}
-            <div className=""></div>
+          </div>
+          {/* right section - order table
+           */}
+          <div className="w-full md:h-2/3 lg:h-3/4">
+            <MyOrdersPage />
           </div>
         </div>
       </div>
