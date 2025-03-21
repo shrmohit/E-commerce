@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const FilterSidebar = () => {
   // x.com/?a=1&b=2
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   const [filters, setFilters] = useState({
     category: "",
     gender: "",
@@ -17,7 +18,7 @@ const FilterSidebar = () => {
 
   const [priceRange, setPriceRange] = useState([0, 100]);
 
-  const categorys = [" Top Wear", "Bottom Wear"];
+  const categorys = ["Top Wear", "Bottom Wear"];
 
   const colors = [
     "red",
@@ -53,7 +54,7 @@ const FilterSidebar = () => {
     "ChicStyle",
   ];
 
-  const genders = [" Men", "Women"];
+  const genders = ["Men", "Women"];
 
   useEffect(() => {
     const params = Object.fromEntries([...searchParams]);
@@ -74,7 +75,6 @@ const FilterSidebar = () => {
 
   const handleFilterChange = (e) => {
     const { name, value, checked, type } = e.target;
-    console.log({ name, value, checked, type });
 
     // multiple value store on click so create copy of the filter
     let newFilters = { ...filters };
@@ -89,9 +89,31 @@ const FilterSidebar = () => {
       newFilters[name] = value;
     }
     setFilters(newFilters);
-    console.log(newFilters);
+    updatedURLParams(newFilters);
   };
 
+  // url change according to selecting checkbox
+  const updatedURLParams = (newFilters) => {
+    const params = new URLSearchParams();
+    //{Category : "Top Wear" , size :["XS","S"]}
+    Object.keys(newFilters).forEach((key) => {
+      if (Array.isArray(newFilters[key]) && newFilters[key].length > 0) {
+        params.append(key, newFilters[key].join(",")); //
+      } else if (newFilters[key]) {
+        params.append(key, newFilters[key]);
+      }
+    });
+    setSearchParams(params);
+    navigate(`?${params.toString()}`); // ?category=bottom+wear&size=XS
+  };
+
+  const handlePriceChange = (e) => {
+    const newPrice = e.target.value;
+    setPriceRange([0, newPrice]);
+    const newFilters = { ...filters, minPrice: 0, maxPrice: newPrice };
+    setFilters(newFilters);
+    updatedURLParams(newFilters);
+  };
   return (
     <div className="p-4">
       <h3 className="text-xl font-medium text-gray-800 mb-4">Filter</h3>
@@ -109,6 +131,7 @@ const FilterSidebar = () => {
               name="category"
               value={category}
               onChange={handleFilterChange}
+              checked={filters.category === category}
               className="h-4 w-4 mr-2 text-blue-500 cursor-pointer focus:ring-blue-400 border-gray-300"
             />
             <span className="text-gray-700">{category}</span>
@@ -129,6 +152,7 @@ const FilterSidebar = () => {
               name="gender"
               value={gender}
               onChange={handleFilterChange}
+              checked={filters.gender === gender}
               className="h-4 w-4 mr-2 text-blue-500 cursor-pointer focus:ring-blue-400 border-gray-300"
             />
             <span className="text-gray-700">{gender}</span>
@@ -138,17 +162,21 @@ const FilterSidebar = () => {
 
       {/* Color Filter */}
       <div className="mb-6 ">
-        <label className="block text-gray-600 font-medium mb-2">Color</label>
-        {colors.map((color) => (
-          <button
-            key={color}
-            name="color"
-            value={color}
-            onChange={handleFilterChange}
-            className="w-8 h-8 rounded-full border border-gray-300 cursor-pointer transition hover:scale-105"
-            style={{ backgroundColor: color.toLowerCase() }}
-          ></button>
-        ))}
+        <label className=" block  text-gray-600 font-medium mb-2">Color</label>
+        <div className="flex gap-2 flex-wrap">
+          {colors.map((color) => (
+            <button
+              key={color}
+              name="color"
+              value={color}
+              onClick={handleFilterChange}
+              className={`w-8 h-8 rounded-full border border-gray-300 cursor-pointer transition hover:scale-105 ${
+                filters.color === color ? "ring-2 ring-blue-500" : ""
+              }`}
+              style={{ backgroundColor: color.toLowerCase() }}
+            ></button>
+          ))}
+        </div>
       </div>
 
       {/* Size Filter */}
@@ -164,6 +192,7 @@ const FilterSidebar = () => {
               name="size"
               value={size}
               onChange={handleFilterChange}
+              checked={filters.size.includes(size)}
               className="h-4 w-4 mr-2 text-blue-500 cursor-pointer focus:ring-blue-400 border-gray-300"
             />
             <span className="text-gray-700">{size}</span>
@@ -184,6 +213,7 @@ const FilterSidebar = () => {
               name="material"
               value={material}
               onChange={handleFilterChange}
+              checked={filters.material.includes(material)}
               className="h-4 w-4 mr-2 text-blue-500 cursor-pointer focus:ring-blue-400 border-gray-300"
             />
             <span className="text-gray-700">{material}</span>
@@ -204,6 +234,7 @@ const FilterSidebar = () => {
               name="brand"
               value={brand}
               onChange={handleFilterChange}
+              checked={filters.brand.includes(brand)}
               className="h-4 w-4 mr-2 text-blue-500 cursor-pointer focus:ring-blue-400 border-gray-300"
             />
             <span className="text-gray-700">{brand}</span>
@@ -220,8 +251,8 @@ const FilterSidebar = () => {
         <input
           type="range"
           name="priceRange"
-          value={priceRange}
-          onChange={handleFilterChange}
+          value={priceRange[1]}
+          onChange={handlePriceChange}
           min={0}
           max={100}
           className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
