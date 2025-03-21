@@ -71,7 +71,7 @@ const Navbar = () => {
               <HiOutlineShoppingBag className="h-5 w-4 text-gray-500  hover:text-black" />
               {/* Bag number of items */}
               <span className="absolute -top-1 bg-rabbit-red text-white text-xs rounded-full px-1 py-0.3">
-                4
+                7
               </span>
             </button>
             {/* search */}

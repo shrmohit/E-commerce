@@ -206,7 +206,7 @@ const ProductDetails = () => {
               <button
                 onClick={handleAddToCart}
                 disabled={isButtonDisbled}
-                className={`py-5 w-full bg-black text-white rounded
+                className={`py-2 w-full bg-black text-white rounded
                mt-5 ${
                  isButtonDisbled
                    ? "cursor-not-allowed opacity-50"

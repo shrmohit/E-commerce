@@ -154,7 +154,7 @@ const NewArrivals = () => {
       {/* Scrollable Content */}
       <div
         ref={scrollRef}
-        className="container mx-auto overflow-x-scroll flex space-x-6 relative scrollbar-hide"
+        className="container mx-auto overflow-x-scroll flex space-x-6 relative scrollbar-hide cursor-pointer"
       >
         {newArrival.map((product) => (
           <div
