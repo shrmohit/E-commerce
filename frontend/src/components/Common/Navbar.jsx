@@ -26,7 +26,7 @@ const Navbar = () => {
           <div>
             <Link
               to="/"
-              className="text-2xl font-medium"
+              className="text-2xl font-extrabold"
             >
               Rabbit
             </Link>
@@ -61,6 +61,12 @@ const Navbar = () => {
 
           {/* Right - Icons*/}
           <div className="flex items-center space-x-4">
+            <Link
+              to="/admin"
+              className="block text-xs font-bold bg-black text-white px-2  rounded"
+            >
+              Admin
+            </Link>
             <Link to="/profile">
               <HiOutlineUser className="h-5 w-4 text-gray-700 hover:text-black" />
             </Link>
@@ -83,7 +89,7 @@ const Navbar = () => {
               className="flex items-center space-x-4 md:hidden"
               onClick={handleNavDrawerToggle}
             >
-              <HiBars3BottomRight className="h-6 w-4 text-gray-500" />
+              <HiBars3BottomRight className="h-6 w-4 text-gray-500  hover:text-black" />
             </button>
           </div>
         </div>
