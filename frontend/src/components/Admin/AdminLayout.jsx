@@ -11,13 +11,25 @@ const AdminLayout = () => {
     <div className="min-h-screen flex flex-col md:flex-row relative">
       {/* MObile toggle button */}
       <div className="flex md:hidden bg-gray-900 p-4 text-white z-20">
-        <button>
-          <FaBars />
+        <button onClick={handleSidebar}>
+          <FaBars size={24} />
         </button>
+        <h1 className="ml-4 text-xl font-medium">Admin Dashboard</h1>
       </div>
+      {/* overlay for mobile sodebar */}
+      {isSidebarOpen && (
+        <div
+          className="fixed  inset-0 z-10 bg-black bg-opacity-50 md:hidden"
+          onClick={handleSidebar}
+        ></div>
+      )}
 
-      {/* <div className="w-64 bg-black h-screen flex ">L</div>
-      <div>R</div> */}
+      {/* sidebar */}
+      <div
+        className={`bg-gray-900  w-64 min-h-screen text-white absolute md:relative transform ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } trsnsition-transform duration-300 md:translate-x-0 md:block z-20`}
+      ></div>
     </div>
   );
 };
