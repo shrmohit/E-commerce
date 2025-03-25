@@ -39,7 +39,7 @@ const EditProductPage = () => {
     console.log(productData);
   };
   return (
-    <div className="max-h-5xl mx-auto p-6 shadow-md rounded-md ">
+    <div className="max-w-4xl mx-auto p-6 shadow-md rounded-md ">
       <h1 className="text-3xl font-bold mb-6">Edit Product</h1>
       <form onSubmit={handleSubmit}>
         {/* Name */}
