@@ -1,1 +1,8 @@
 sonner is used for message popup.
+express -> node js framework used for building api
+mongoose -> object data moduling  libraery for mongodb and it is help as to find out schema for data and with help of this we perform many database operation like query from database and validity
+dotenv -> this package help as to load environment variable from .env file like port no. and url
+jsonwebtoken -> this package  used to manage authentication and authorization of user in a e-commerce website
+bcryptjs -> libraery used for storing password of user and incrypt password for as
+cors (cross-origin resource sharing ) -> frontend and backend running on different port and used this we allow to access over api which hosted on different domain
+nodemon -> is used for restart the server 
