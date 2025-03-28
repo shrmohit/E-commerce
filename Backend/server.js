@@ -1,9 +1,15 @@
 const express = require("express");
 const cors = require("cors");
+// it used to connect env on code
+const dotenv = require("dotenv");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+dotenv.config();
+
+console.log(process.env.PORT);
 
 const PORT = 9000;
 
