@@ -3,6 +3,7 @@ const cors = require("cors");
 // it used to connect env on code
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+const userRoute = require("./routes/userRoutes");
 
 const app = express();
 app.use(express.json());
@@ -18,6 +19,9 @@ connectDB();
 app.get("/", (req, res) => {
   res.send("WELCOME TO RABBIT API!");
 });
+
+// API Routes
+app.use("/api/users", userRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
