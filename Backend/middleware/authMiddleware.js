@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const user = require("../models/User");
 
 // Middleware to protect routes
-const protect = async (req, resizeBy, next) => {
+const protect = async (req, res, next) => {
   let token;
 
   if (
@@ -17,7 +17,7 @@ const protect = async (req, resizeBy, next) => {
       next();
     } catch (error) {
       console.error("Token verification failed:", error);
-      resizeBy.status(401).json({ message: "Not authorized, token failed" });
+      res.status(401).json({ message: "Not authorized, token failed" });
     }
   } else {
     resizeBy.status(401).json({ message: "Not authorized, no token provided" });
