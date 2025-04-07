@@ -35,34 +35,34 @@ const productSchema = new mongoose.Schema(
     brand: {
       type: String,
     },
-    size: {
+    sizes: {
       type: [String],
       required: true,
     },
     colors: {
-      type: [string],
+      type: [String],
       required: true,
     },
     collections: {
-      type: string,
+      type: String,
       required: true,
     },
     material: {
-      type: string,
+      type: String,
       required: true,
     },
     gender: {
-      type: string,
+      type: String,
       enum: ["Men", "Women", "Unisex"],
     },
     images: [
       {
         url: {
-          type: string,
+          type: String,
           required: true,
         },
         altText: {
-          type: string,
+          type: String,
         },
       },
     ],
@@ -82,7 +82,7 @@ const productSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    tags: [string],
+    tags: [String],
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
