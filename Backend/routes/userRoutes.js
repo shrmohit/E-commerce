@@ -100,4 +100,7 @@ router.get("/profile", protect, async (req, res) => {
   res.json(req.user);
 });
 
+router.get("/", (req, res) => {
+  res.send("User route works!");
+});
 module.exports = router;

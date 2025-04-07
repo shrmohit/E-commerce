@@ -4,6 +4,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const userRoute = require("./routes/userRoutes");
+const ProductRoute = require("./routes/productRouter");
 
 const app = express();
 app.use(express.json());
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 
 // API Routes
 app.use("/api/users", userRoute);
+app.use("/api/products", ProductRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
